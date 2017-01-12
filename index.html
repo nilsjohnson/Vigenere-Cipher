@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Vigenere Cipher</title>
+    <meta charset="utf-8">
+    <meta name="description" content="Vigenere Cipher">
+    <link href="style.css" rel="stylesheet">
+    <script src="cipher.js"></script>
+</head>
+<body>
+    <h1>Vigenere Cipher</h1>
+    <form>
+        <label>Plain Text: </label>
+        <input id="plain-text"/>
+
+        <label>key: </label>
+        <input id="key"/>
+
+        <br>
+
+        <input type="radio" id="encrypt" name="action-option" value="encrypt" checked> Encrypt<br>
+        <input type="radio" id="decrypt" name="action-option" value="decypt"> Decypt<br>
+    </form> 
+
+    <button onclick="main()">Let's Do This!</button>
+
+    <p> Your Message:</p>
+    <p id="encrypted-text"></p>
+
+</body>
+</html>
