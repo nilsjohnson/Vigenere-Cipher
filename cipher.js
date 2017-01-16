@@ -3,37 +3,41 @@
 // Programmer: Nils Johnson
 // Last Modified: 1/13/2017, 10:51am
 
-var isValidPlainText;
-var isValidKey;
 const ALPHABET = 'abcdefghijklmnopqrstuvwxyz';
+const error_class = error_class;
 
 function encrypt()
 {
 	var textEl = document.getElementById("plain-text");
 	var keyEl = document.getElementById("key");
-	var rawText = textEl.value;
-	var rawKey = keyEl.value;
+	var rawText = textEl.value.replace(/[^a-z\s]/gi, '');
+	var rawKey = keyEl.value.replace(/[^a-z]/gi, '');
 	var canEncrypt = true;
-	if (rawText === '')
-	{
-		textEl.classList.add('error');
+	if (rawText === '') {
+		textEl.classList.add(error_class);
 		canEncrypt = false;
 	}
-	if (key === '')
+	else {
+		textEl.classList.remove(error_class);
+	}
+	if (rawKey === '')
 	{
-		keyEl.classList.add('error');
+		keyEl.classList.add(error_class);
 		canEncrypt = false;
 	}
-	var encrypt = document.getElementById("encrypt").checked;
+	else {
+		keyEl.classList.remove(error_class);
+	}
 	if (canEncrypt)
 	{
+		var encrypt = document.getElementById("encrypt").checked;
 		var key = rawKey.toLowerCase();
 		var text = rawText.toLowerCase();
-		var output = ''
+		var output = '';
 		var keyIndex = 0;
-		for (var i = 0; i < text.length; i++)
+		for (var textIndex = 0; textIndex < text.length; textIndex++)
 		{
-			if (text[i] === ' ')
+			if (text[textIndex] === ' ')
 			{
 				output += ' ';
 			}
@@ -41,18 +45,16 @@ function encrypt()
 			{
 				var newIndex;
 				if (encrypt){
-					newIndex = ALPHABET.indexOf(text[i]) + ALPHABET.indexOf(key[keyIndex]);
+					newIndex = ALPHABET.indexOf(text[textIndex]) + ALPHABET.indexOf(key[keyIndex]);
 				}
 				else {
-					newIndex = ALPHABET.indexOf(text[i]) - ALPHABET.indexOf(key[keyIndex]);
+					newIndex = ALPHABET.indexOf(text[itextIndex]) - ALPHABET.indexOf(key[keyIndex]);
 				}
 				output += ALPHABET[newIndex % ALPHABET.length];
 				keyIndex = (keyIndex + 1) % key.length;
 			}
-			console.log(output);
 		}
 
 		document.getElementById("encrypted-text").innerHTML = output;
 	}
-	return;
-};
+}
