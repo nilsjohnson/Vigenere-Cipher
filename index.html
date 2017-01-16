@@ -16,13 +16,14 @@
         <label>key: </label>
         <input id="key"/>
 
-        <br>
+        <br />
 
-        <input type="radio" id="encrypt" name="action-option" value="encrypt" checked> Encrypt<br>
-        <input type="radio" id="decrypt" name="action-option" value="decypt"> Decypt<br>
+        <input type="radio" name="action-option" id="encrypt" checked>Encrypt<br>
+        <input type="radio" name="action-option" id="decypt"> Decypt<br>
+
     </form> 
 
-    <button onclick="main()">Let's Do This!</button>
+    <button onclick="encrypt()">Let's Do This!</button>
 
     <p> Your Message:</p>
     <p id="encrypted-text"></p>
